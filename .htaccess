@@ -1,0 +1,33 @@
+<IfModule mod_rewrite.c>
+    
+	#Bloquear listagem
+	Options -Indexes
+
+	Options +FollowSymLinks
+	RewriteEngine on
+
+	DefaultLanguage pt-BR
+	AddDefaultCharset UTF-8
+
+	RewriteCond %{SCRIPT_FILENAME} !-d
+	RewriteCond %{SCRIPT_FILENAME} !-f
+	
+
+
+	#PAGES**************************************************************
+
+
+	RewriteRule ^home?$ index.php [L,QSA]
+	RewriteRule ^contato?$ entrandoemcontato.php [L,QSA]
+	RewriteRule ^mude-sua-vida?$ mude_sua_vida.php [L,QSA]
+	RewriteRule ^sobre_mim?$ sobre.php [L,QSA]
+	RewriteRule ^pensamento?$ pensamento.php [L,QSA]
+	RewriteRule ^psicoterapia?$ psicoterapia.php [L,QSA]
+	RewriteRule ^noticias/(.*)/(.*)?$ noticias.php?id=$1&id2=$2 [L,QSA]
+	RewriteRule ^materias-e-noticias/(.*)/(.*)?$ materias.php?id=$1&id2=$2 [L,QSA]
+
+
+</IfModule>
+
+	RewriteCond %{HTTPS} off
+	RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
